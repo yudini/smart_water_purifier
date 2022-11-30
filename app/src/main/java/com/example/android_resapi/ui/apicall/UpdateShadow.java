@@ -51,7 +51,7 @@ public class UpdateShadow extends PutRequest {
             Log.i(TAG, "jsonString="+jsonString);
             JSONObject root = new JSONObject(jsonString);
             JSONObject state = root.getJSONObject("state");
-            JSONObject desired = state.getJSONObject("reported");
+            JSONObject desired = state.getJSONObject("desired");
             String std = desired.getString("Water_Sensor");
             if (std != null) output.put("Water_Sensor", std);
 
