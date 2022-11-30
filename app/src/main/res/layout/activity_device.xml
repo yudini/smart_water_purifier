@@ -100,43 +100,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/water_state"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/reported_waterState"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/water_state"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/desired_waterState"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </TableRow>
-
-        <TableRow>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="@string/pirState"
                     android:textStyle="bold" />
 
@@ -246,27 +209,5 @@
         android:layout_width="match_parent"
         android:layout_height="19dp"
         android:background="?android:attr/listDivider" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="변경"
-        android:id = "@+id/updateBtn"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/std"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/edit_std"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
 
 </LinearLayout>

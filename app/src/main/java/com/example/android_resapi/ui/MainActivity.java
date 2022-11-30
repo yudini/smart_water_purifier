@@ -14,7 +14,7 @@ import com.example.android_resapi.R;
 
 public class MainActivity extends AppCompatActivity {
     final static String TAG = "AndroidAPITest";
-    EditText listThingsURL, thingShadowURL, getLogsURL;
+    EditText listThingsURL, getShadowURL,updateShadowURL, getLogsURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listThingsURL = findViewById(R.id.listThingsURL);
-        thingShadowURL = findViewById(R.id.thingShadowURL);
+        getShadowURL = findViewById(R.id.getShadowURL);
+        updateShadowURL = findViewById(R.id.updateShadowURL);
         getLogsURL = findViewById(R.id.getLogsURL);
 
         Button listThingsBtn = findViewById(R.id.listThingsBtn);
@@ -43,17 +44,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button thingShadowBtn = findViewById(R.id.thingShadowBtn);
-        thingShadowBtn.setOnClickListener(new View.OnClickListener() {
+        Button getShadowBtn = findViewById(R.id.getShadowBtn);
+        getShadowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String urlstr = thingShadowURL.getText().toString();
+                String urlstr = getShadowURL.getText().toString();
                 if (urlstr == null || urlstr.equals("")) {
-                    Toast.makeText(MainActivity.this, "사물상태 조회/변경 API URI 입력이 필요합니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "사물상태 조회 API URI 입력이 필요합니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Intent intent = new Intent(MainActivity.this, DeviceActivity.class);
-                intent.putExtra("thingShadowURL", thingShadowURL.getText().toString());
+                intent.putExtra("getShadowURL", getShadowURL.getText().toString());
+                startActivity(intent);
+
+            }
+        });
+
+        Button updateShadowBtn = findViewById(R.id.updateShadowBtn);
+        updateShadowBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String urlstr = updateShadowURL.getText().toString();
+                if (urlstr == null || urlstr.equals("")) {
+                    Toast.makeText(MainActivity.this, "사물상태 변경 API URI 입력이 필요합니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
+                intent.putExtra("updateShadowURL", updateShadowURL.getText().toString());
                 startActivity(intent);
 
             }

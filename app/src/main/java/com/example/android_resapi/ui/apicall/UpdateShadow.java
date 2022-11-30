@@ -5,8 +5,13 @@ import android.util.Log;
 import android.widget.Toast;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.example.android_resapi.httpconnection.PutRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class UpdateShadow extends PutRequest {
     final static String TAG = "AndroidAPITest";
@@ -36,7 +41,7 @@ public class UpdateShadow extends PutRequest {
         Toast.makeText(activity,result, Toast.LENGTH_SHORT).show();
     }
 
-  /*  protected Map<String, String> getStateFromJSONString(String jsonString) {
+    protected Map<String, String> getStateFromJSONString(String jsonString) {
         Map<String, String> output = new HashMap<>();
         try {
             // 처음 double-quote와 마지막 double-quote 제거
@@ -46,11 +51,9 @@ public class UpdateShadow extends PutRequest {
             Log.i(TAG, "jsonString="+jsonString);
             JSONObject root = new JSONObject(jsonString);
             JSONObject state = root.getJSONObject("state");
-            JSONObject desired = state.getJSONObject("desired");
-            String tempValue = desired.getString("temperature");
-            if (tempValue != null) output.put("temperature", tempValue);
-            String ledValue = desired.getString("LED");
-            if (ledValue != null) output.put("LED",ledValue);
+            JSONObject desired = state.getJSONObject("reported");
+            String std = desired.getString("Water_Sensor");
+            if (std != null) output.put("Water_Sensor", std);
 
         } catch (JSONException e) {
             Log.e(TAG, "Exception in processing JSONString.", e);
@@ -58,6 +61,6 @@ public class UpdateShadow extends PutRequest {
         }
         return output;
     }
-*/
+
 
 }
