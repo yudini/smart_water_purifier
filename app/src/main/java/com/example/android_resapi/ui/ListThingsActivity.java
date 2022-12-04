@@ -15,11 +15,10 @@ public class ListThingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_things);
 
-        Intent intent = getIntent();
-        String url = intent.getStringExtra("listThingsURL");
+        Intent intent = getIntent();  //새도우를 받기위한 인텐트 생성
+        String url = intent.getStringExtra("listThingsURL");  //listThingsURL 이름으로 받아온 값을 저장
 
-
-        new GetThings(ListThingsActivity.this, url).execute();
+        new GetThings(ListThingsActivity.this, url).execute(); //사물을 받아옴
 
 
     }

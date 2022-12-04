@@ -25,7 +25,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/device_state"
+        android:text="물그릇 최신 상태"
+        android:textColor="#3423FF"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <TableLayout

@@ -35,7 +35,7 @@ public class GetThings extends GetRequest {
         try {
             url = new URL(urlStr);
 
-        } catch (MalformedURLException e) {
+        } catch (MalformedURLException e) {  //예외처리
             Toast.makeText(activity,"URL is invalid:"+urlStr, Toast.LENGTH_SHORT).show();
             activity.finish();
             e.printStackTrace();
@@ -47,7 +47,7 @@ public class GetThings extends GetRequest {
     @Override
     protected void onPostExecute(String jsonString) {
         TextView message = activity.findViewById(R.id.message);
-        if (jsonString == null || jsonString.equals("")) {
+        if (jsonString == null || jsonString.equals("")) {  //받아온 jsonString이 없을 시
             message.setText("디바이스 없음");
             return;
         }
@@ -66,7 +66,7 @@ public class GetThings extends GetRequest {
                 Thing thing = (Thing)adapterView.getAdapter().getItem(i);
                 Intent intent = new Intent(activity, DeviceActivity.class );
                 intent.putExtra("thingShadowURL", urlStr+"/"+thing.name);
-                activity.startActivity(intent);
+                activity.startActivity(intent); //thingShadowURL로 받아온 인텐트(화면,액티비티) 시작
             }
         });
     }
@@ -87,7 +87,7 @@ public class GetThings extends GetRequest {
                 JSONObject jsonObject = (JSONObject)jsonArray.get(i);
 
                 Thing thing = new Thing(jsonObject.getString("thingName"),
-                        jsonObject.getString("thingArn"));
+                        jsonObject.getString("thingArn"));  //사물 이름과 사물 Arn을 받아옴
 
                 output.add(thing);
             }
@@ -99,7 +99,7 @@ public class GetThings extends GetRequest {
         return output;
     }
 
-    class Thing {
+    class Thing {  //Thing 클래스
         String name;
         String arn;
         HashMap<String, String> tags;

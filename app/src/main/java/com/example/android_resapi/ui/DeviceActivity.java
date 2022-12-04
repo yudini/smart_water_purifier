@@ -25,17 +25,15 @@ public class DeviceActivity extends AppCompatActivity {
     Button startGetBtn;
     Button stopGetBtn;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device);
-        Intent intent = getIntent();
-        urlStr = intent.getStringExtra("getShadowURL");
+        Intent intent = getIntent();   //새도우를 받기 위한 인텐트
+        urlStr = intent.getStringExtra("getShadowURL");  //인텐트로 받은 getShadowURL이름의 섀도우 URL
 
-        startGetBtn = findViewById(R.id.startGetBtn);
-        startGetBtn.setEnabled(true);
+        startGetBtn = findViewById(R.id.startGetBtn);  //조회 시작 버튼
+        startGetBtn.setEnabled(true);  //조회시작버튼 활성화
         startGetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,45 +41,49 @@ public class DeviceActivity extends AppCompatActivity {
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        new GetThingShadow(DeviceActivity.this, urlStr).execute();
+                        new GetThingShadow(DeviceActivity.this, urlStr).execute();  //url을 가지고 GetThingshadow 호출
                     }
                 },
                         0,2000);
 
-                startGetBtn.setEnabled(false);
-                stopGetBtn.setEnabled(true);
+                startGetBtn.setEnabled(false);  //조회시작버튼 비활성화
+                stopGetBtn.setEnabled(true);   //조회종료버튼 활성화
             }
         });
 
-        stopGetBtn = findViewById(R.id.stopGetBtn);
-        stopGetBtn.setEnabled(false);
+        stopGetBtn = findViewById(R.id.stopGetBtn);  //조회 종료 버튼
+        stopGetBtn.setEnabled(false);    //조회중지버튼 비활성화
         stopGetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {   //조회종료버튼 클릭 시
                 if (timer != null)
                     timer.cancel();
-                clearTextView();
-                startGetBtn.setEnabled(true);
-                stopGetBtn.setEnabled(false);
+                clearTextView();   //clearTextView 호출
+                startGetBtn.setEnabled(true); //조회시작버튼 활성화
+                stopGetBtn.setEnabled(false);//조회종료버튼 비활성화
             }
         });
+
 
     }
 
     private void clearTextView() {
+        //id에 따라 textview를 받아옴
         TextView reported_waterLevelTV = findViewById(R.id.reported_waterLevel);
         TextView reported_pirStateTV = findViewById(R.id.reported_pirState);
         TextView reported_ledTV = findViewById(R.id.reported_led);
         TextView reported_motionTV = findViewById(R.id.reported_motion);
+        //텍스트 값을 설정
         reported_ledTV.setText("");
         reported_pirStateTV.setText("");
         reported_waterLevelTV.setText("");
         reported_motionTV.setText("");
 
-        TextView desired_waterLevelTV =findViewById(R.id.desired_waterLevel);
-        TextView desired_pirStateTV = findViewById(R.id.desired_pirState);
-        TextView desired_ledTV = findViewById(R.id.desired_led);
-        TextView desired_motionTV = findViewById(R.id.desired_motion);
+        TextView desired_waterLevelTV =findViewById(R.id.desired_waterLevel);  //최신 물 수위 상태
+        TextView desired_pirStateTV = findViewById(R.id.desired_pirState);   //최신 모터 상태
+        TextView desired_ledTV = findViewById(R.id.desired_led);   //최신 led상태
+        TextView desired_motionTV = findViewById(R.id.desired_motion);  //최신 모션 감지 상태
+        //텍스트 값을 설정
         desired_ledTV.setText("");
         desired_pirStateTV.setText("");
         desired_waterLevelTV.setText("");

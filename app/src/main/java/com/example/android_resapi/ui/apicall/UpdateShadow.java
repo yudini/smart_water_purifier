@@ -41,6 +41,7 @@ public class UpdateShadow extends PutRequest {
         Toast.makeText(activity,result, Toast.LENGTH_SHORT).show();
     }
 
+    //사용 x
     protected Map<String, String> getStateFromJSONString(String jsonString) {
         Map<String, String> output = new HashMap<>();
         try {
